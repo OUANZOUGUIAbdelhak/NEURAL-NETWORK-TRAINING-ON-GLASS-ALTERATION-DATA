@@ -2,8 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score  # <-- import ajouté ici
+from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel, WhiteKernel
@@ -25,7 +24,7 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
 # Division train/test
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=1)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
 # Définir le noyau pour GPR
 kernel = (
@@ -35,7 +34,7 @@ kernel = (
 )
 
 # Initialiser le modèle
-gpr = GaussianProcessRegressor(kernel=kernel, random_state=1, n_restarts_optimizer=10)
+gpr = GaussianProcessRegressor(kernel=kernel, random_state=42, n_restarts_optimizer=10)
 
 # Définir la grille de paramètres pour la recherche
 param_grid = {
@@ -68,7 +67,7 @@ print("Cross-validated R² scores:", scores)
 print("Average R²:", scores.mean())
 
 # Importance des variables (via permutation)
-perm_importance = permutation_importance(best_gpr, X_test, y_test, n_repeats=10, random_state=1)
+perm_importance = permutation_importance(best_gpr, X_test, y_test, n_repeats=10, random_state=42)
 features = X.columns
 important = sorted(zip(perm_importance.importances_mean, features), reverse=True)
 print("Top 10 features:")
@@ -83,5 +82,7 @@ plt.ylabel("Predicted V0_B_ou_r0_B")
 plt.title("GPR: Actual vs Predicted Dissolution Rates")
 plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')
 plt.grid()
-plt.savefig("gpr_actual_vs_predicted.png")
+
+# Save the plot to the specified path
+plt.savefig("/home/intra.cea.fr/ao280403/Bureau/ML Model/GAUSSIAN_PROCESS_REGRESSION/gpr_actual_vs_predicted.png")
 plt.show()

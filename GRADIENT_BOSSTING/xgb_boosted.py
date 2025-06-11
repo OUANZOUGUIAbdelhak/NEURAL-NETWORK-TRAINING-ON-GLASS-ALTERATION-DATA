@@ -5,6 +5,7 @@ from xgboost import XGBRegressor
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import mean_squared_error, r2_score
 import seaborn as sns
+
 # Fonction log1p signée pour valeurs négatives
 def signed_log1p(x):
     return np.sign(x) * np.log1p(np.abs(x))
@@ -63,8 +64,20 @@ plt.barh([name for _, name in reversed(top_features)], [score for score, _ in re
 plt.xlabel("Feature Importance")
 plt.title("Top 10 Most Important Features")
 plt.tight_layout()
-plt.savefig("feature_importance.png")  # Remplacer plt.show() si l'environnement est non interactif
+plt.savefig("/home/intra.cea.fr/ao280403/Bureau/ML Model/GRADIENT_BOSSTING/feature_importance.png")
+
+# Distribution de la cible
 plt.figure(figsize=(8, 4))
 sns.histplot(y, kde=True)
 plt.title("Distribution de la cible V0_B_ou_r0_B")
-plt.savefig("target_distribution.png")
+plt.savefig("/home/intra.cea.fr/ao280403/Bureau/ML Model/GRADIENT_BOSSTING/target_distribution.png")
+
+# Scatter plot des valeurs prédites vs réelles
+plt.figure(figsize=(8, 8))
+plt.scatter(y_test_original, y_pred, alpha=0.5)
+plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')
+plt.xlabel("Valeurs Réelles")
+plt.ylabel("Valeurs Prédites")
+plt.title("Valeurs Prédites vs Réelles")
+plt.grid(True)
+plt.savefig("/home/intra.cea.fr/ao280403/Bureau/ML Model/GRADIENT_BOSSTING/predicted_vs_actual_values.png")
