@@ -19,7 +19,7 @@ RANDOM_STATE = 42
 # ------------------------
 # LOAD DATA
 # ------------------------
-df = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data_Visualization/Data_for_B.csv")
+df = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data_for_B_positive.csv")
 print("Missing values:\n", df.isnull().sum())
 
 X = df.drop(columns=["V0_B_ou_r0_B"])
