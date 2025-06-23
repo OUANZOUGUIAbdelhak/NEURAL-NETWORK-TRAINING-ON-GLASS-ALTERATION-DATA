@@ -30,7 +30,7 @@ plt.rcParams['figure.dpi'] = 100
 os.makedirs("figures", exist_ok=True)  # dossier pour enregistrer les images
 
 # Chargement de la base
-df = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data_Visualization/Data_for_B.csv")
+df = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data_for_B_positive.csv")
 print("Shape :", df.shape)
 print(df.head())
 

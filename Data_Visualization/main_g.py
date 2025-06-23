@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Charger les données (change 'glass_data.csv' par le nom de ton fichier CSV)
-df = pd.read_csv('/home/intra.cea.fr/ao280403/Bureau/ML Model/Data_Visualization/Data_for_B.csv')
+df = pd.read_csv('/home/intra.cea.fr/ao280403/Bureau/ML Model/Data_for_B_positive.csv')
 
 # Liste des éléments chimiques (suppose que les trois dernières colonnes sont 'Température', 'Ph_Final', 'V0_B_ou_r0_B')
 element_columns = df.columns[:-3]
