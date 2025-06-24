@@ -11,7 +11,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 sns.set(style="whitegrid")
 
 # 🔹 Load Data
-df = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph _ Less than 4_ final.csv")  # Update with your actual file
+df = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Poh _ Less than 4_ final.csv")  # Update with your actual file
 
 # 🔹 Separate Features and Target
 X = df.drop(columns="V0_B_ou_r0_B")  # Replace "target" with actual column name
