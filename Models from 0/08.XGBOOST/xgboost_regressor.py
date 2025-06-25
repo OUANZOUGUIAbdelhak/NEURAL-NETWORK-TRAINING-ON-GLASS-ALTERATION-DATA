@@ -9,11 +9,11 @@ import seaborn as sns
 # Load your dataset here
 # Replace this with your actual dataset loading code
 # Example: data = pd.read_csv('your_data.csv')
-data = pd.read_csv('/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph _ Less than 4_ final.csv')
+data = pd.read_csv('/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph LnV0.csv')
 
 # Define features and target
-X = data.drop(columns=['V0_B_ou_r0_B'])  # Replace 'target_column' with your target column name
-y = data['V0_B_ou_r0_B']
+X = data.drop(columns=['Ln(V0)'])  # Replace 'target_column' with your target column name
+y = data['Ln(V0)']
 
 # Split data into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)

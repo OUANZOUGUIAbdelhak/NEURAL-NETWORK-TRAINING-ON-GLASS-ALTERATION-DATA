@@ -9,12 +9,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
 # Load data
-df = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph _ Less than 4_ final.csv")  # Replace with your actual dataset path
+df = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph LnV0.csv")  # Replace with your actual dataset path
 df.dropna(inplace=True)
 
 # Features and target
-X = df.drop("V0_B_ou_r0_B", axis=1)  # Replace with your target column
-y = df["V0_B_ou_r0_B"]
+X = df.drop("Ln(V0)", axis=1)  # Replace with your target column
+y = df["Ln(V0)"]
 
 # Split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)

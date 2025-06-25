@@ -10,11 +10,11 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
 # Load your dataset
-data = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph _ Less than 4_ final.csv")  # Replace with your file
+data = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph LnV0.csv")  # Replace with your file
 
 # Split features and target
-X = data.drop("V0_B_ou_r0_B", axis=1)  # Replace "target" with your actual target column name
-y = data["V0_B_ou_r0_B"]
+X = data.drop("Ln(V0)", axis=1)  # Replace "target" with your actual target column name
+y = data["Ln(V0)"]
 
 # Train/test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
