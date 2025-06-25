@@ -9,12 +9,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load your dataset
-file_path = "/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph _ Less than 4_ final.csv"  # Replace with actual path
+file_path = "/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph LnV0.csv"  # Replace with actual path
 df = pd.read_csv(file_path)
 
 # Split features and target
-X = df.drop(columns=["V0_B_ou_r0_B"])
-y = df["V0_B_ou_r0_B"]
+X = df.drop(columns=["Ln(V0)"])
+y = df["Ln(V0)"]
 
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
