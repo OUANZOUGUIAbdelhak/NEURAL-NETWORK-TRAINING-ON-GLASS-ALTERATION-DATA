@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
 # Load your dataset
-data = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph LnV0.csv")  # Replace with your file
+data = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data Si ph LnV0.csv")  # Replace with your file
 
 # Split features and target
 X = data.drop("Ln(V0)", axis=1)  # Replace "target" with your actual target column name
