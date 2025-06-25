@@ -11,11 +11,11 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 sns.set(style="whitegrid")
 
 # 🔹 Load Data
-df = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Poh _ Less than 4_ final.csv")  # Update with your actual file
+df = pd.read_csv("/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph LnV0.csv")  # Update with your actual file
 
 # 🔹 Separate Features and Target
-X = df.drop(columns="V0_B_ou_r0_B")  # Replace "target" with actual column name
-y = df["V0_B_ou_r0_B"]
+X = df.drop(columns="Ln(V0)")  # Replace "target" with actual column name
+y = df["Ln(V0)"]
 
 # 🔹 Train-Test Split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)

@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load your dataset
-file_path = "/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph LnV0.csv"  # Replace with actual path
+file_path = "/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data Si ph LnV0.csv"  # Replace with actual path
 df = pd.read_csv(file_path)
 
 # Split features and target
