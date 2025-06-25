@@ -9,12 +9,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load your dataset
-file_path = "/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data Si Poh LnV0.csv"  # Replace with actual path
+file_path = "/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data Si ph V0.csv"  
 df = pd.read_csv(file_path)
 
 # Split features and target
-X = df.drop(columns=["Ln(V0)"])
-y = df["Ln(V0)"]
+X = df.drop(columns=["V0_Si_ou_r0_Si"])
+y = df["V0_Si_ou_r0_Si"]
 
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -57,4 +57,16 @@ plt.title("Neural Network Residuals")
 plt.xlabel("Actual")
 plt.ylabel("Residuals")
 plt.tight_layout()
-plt.show()
+plt.savefig("residuals_plot.png", dpi=300)
+
+# Plot predicted vs actual values
+plt.figure(figsize=(6, 6))
+sns.scatterplot(x=y_test, y=y_pred_nn, alpha=0.7)
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--')  # Diagonal line
+plt.xlabel("Actual V0(Si)")
+plt.ylabel("Predicted V0(Si)")
+plt.title("Predicted vs Actual Values")
+plt.axis('equal')
+plt.tight_layout()
+plt.savefig("predicted_vs_actual.png", dpi=300)
+
