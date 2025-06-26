@@ -67,4 +67,57 @@ plt.tight_layout()
 plt.savefig("predicted_vs_actual_with_uncertainty.png", dpi=300)
 plt.show()
 
+# Résidus
+residuals = y_test - y_pred_nn
+
+# Re-créer X_test sous forme DataFrame si transformé
+X_test_df = pd.DataFrame(X_test, columns=X.columns).reset_index(drop=True)
+y_test_df = y_test.reset_index(drop=True)
+residuals_df = pd.DataFrame({
+    "residuals": residuals,
+    "y_test": y_test_df
+})
+
+# Ajouter les variables explicatives
+for col in X_test_df.columns:
+    residuals_df[col] = X_test_df[col]
+
+# 1. Résidus vs Valeur mesurée
+plt.figure(figsize=(6, 4))
+sns.scatterplot(x="y_test", y="residuals", data=residuals_df)
+plt.axhline(0, color='red', linestyle='--')
+plt.title("Résidus vs Valeur mesurée (Ln(V₀))")
+plt.xlabel("Valeur mesurée")
+plt.ylabel("Résidu (mesurée - prédite)")
+plt.tight_layout()
+plt.show()
+
+# 2. Résidus vs pH
+plt.figure(figsize=(6, 4))
+sns.scatterplot(x="pH", y="residuals", data=residuals_df)
+plt.axhline(0, color='red', linestyle='--')
+plt.title("Résidus vs pH")
+plt.tight_layout()
+plt.show()
+
+# 3. Résidus vs température
+plt.figure(figsize=(6, 4))
+sns.scatterplot(x="Temperature", y="residuals", data=residuals_df)
+plt.axhline(0, color='red', linestyle='--')
+plt.title("Résidus vs Température")
+plt.tight_layout()
+plt.show()
+
+# 4. Résidus vs composition (Si, B, Na, etc.)
+for col in ["Si", "B", "Na"]:  # adapte selon tes colonnes
+    plt.figure(figsize=(6, 4))
+    sns.scatterplot(x=col, y="residuals", data=residuals_df)
+    plt.axhline(0, color='red', linestyle='--')
+    plt.title(f"Résidus vs {col}")
+    plt.tight_layout()
+    plt.show()
+
+corrs = residuals_df.corr()["residuals"].drop("residuals")
+print("Corrélations avec les résidus :")
+print(corrs.sort_values(ascending=False))
 
