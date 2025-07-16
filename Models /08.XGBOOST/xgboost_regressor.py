@@ -9,7 +9,7 @@ import seaborn as sns
 # Load your dataset here
 # Replace this with your actual dataset loading code
 # Example: data = pd.read_csv('your_data.csv')
-data = pd.read_csv('/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph LnV0.csv')
+data = pd.read_csv('/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph V0.csv')
 
 # Define features and target
 X = data.drop(columns=['Ln(V0)'])  # Replace 'target_column' with your target column name
