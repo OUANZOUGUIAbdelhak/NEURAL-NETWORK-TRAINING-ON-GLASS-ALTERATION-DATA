@@ -12,7 +12,7 @@ from matplotlib.gridspec import GridSpec
 # =======================
 # 1. Load & preprocess data
 # =======================
-file_path = "/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph LnV0.csv" 
+file_path = "/home/intra.cea.fr/ao280403/Bureau/ML Model/Data/Data B Ph LnV0 with less param.csv" 
 df = pd.read_csv(file_path)
 
 # Split features and target
