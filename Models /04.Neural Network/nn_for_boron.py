@@ -61,7 +61,7 @@ print(f"  MAE           : {mae:.4f}")
 print(f"  RMSE          : {rmse:.4f}")
 
 # =======================
-# 4. Advanced visualization
+# 4. Advanced visualization (Ln(V₀) of Boron)
 # =======================
 sns.set_theme(style="whitegrid", font_scale=1.2)
 
@@ -77,9 +77,9 @@ scatter = sns.scatterplot(
 )
 ax1.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()],
          'r--', lw=2, label="Ideal Fit")
-ax1.set_xlabel("Actual Ln(V₀)", fontsize=14)
-ax1.set_ylabel("Predicted Ln(V₀)", fontsize=14)
-ax1.set_title("Model Predictions vs Actual Values", fontsize=16, weight='bold')
+ax1.set_xlabel("Actual Ln(V₀) of Boron", fontsize=14)
+ax1.set_ylabel("Predicted Ln(V₀) of Boron", fontsize=14)
+ax1.set_title("Predicted vs Actual Values\n(Ln(V₀) of Boron)", fontsize=16, weight='bold')
 
 # Annotate metrics
 metrics_text = f"R² = {r2:.3f}\nRMSE = {rmse:.3f}\nMAE = {mae:.3f}"
@@ -94,8 +94,8 @@ cbar.set_label("Residual Magnitude", rotation=270, labelpad=15)
 ax2 = fig.add_subplot(gs[0, 1])
 residuals = y_test - y_pred_nn
 sns.histplot(residuals, kde=True, ax=ax2, color="skyblue", edgecolor="black")
-ax2.set_title("Residual Distribution", fontsize=14, weight='bold')
-ax2.set_xlabel("Residuals")
+ax2.set_title("Residual Distribution\n(Ln(V₀) of Boron)", fontsize=14, weight='bold')
+ax2.set_xlabel("Residuals (Ln(V₀) of Boron)")
 ax2.axvline(0, color='red', linestyle='--', lw=1.5)
 
 # --- 3. Training history ---
@@ -103,11 +103,11 @@ ax3 = fig.add_subplot(gs[1, 1])
 epochs_range = range(1, len(history.history['loss']) + 1)
 ax3.plot(epochs_range, history.history['loss'], label='Training Loss', lw=2)
 ax3.plot(epochs_range, history.history['val_loss'], label='Validation Loss', lw=2)
-ax3.set_title("Training & Validation Loss", fontsize=14, weight='bold')
+ax3.set_title("Training & Validation Loss\n(Ln(V₀) of Boron)", fontsize=14, weight='bold')
 ax3.set_xlabel("Epochs")
 ax3.set_ylabel("Loss (MSE)")
 ax3.legend()
 
-# Save high-resolution plot
-plt.savefig("model_results_advanced.png", dpi=300, bbox_inches="tight")
+# Save high-resolution combined plot
+plt.savefig("model_results_LnV0_Boron.png", dpi=600, bbox_inches="tight")
 plt.show()
